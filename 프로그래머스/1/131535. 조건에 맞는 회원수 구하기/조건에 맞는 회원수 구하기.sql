@@ -1,0 +1,4 @@
+-- 코드를 입력하세요
+SELECT COUNT(USER_ID)
+FROM USER_INFO
+WHERE (AGE >= 20 && AGE <= 29) && (JOINED >= '2021-01-01' && JOINED <= '2021-12-31');
