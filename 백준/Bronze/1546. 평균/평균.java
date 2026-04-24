@@ -1,33 +1,17 @@
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main (String[] args) {
 		Scanner sc = new Scanner(System.in);
-		double num, sum=0;
-		int cnt;
-		
-		cnt = sc.nextInt();
-		double[] n = new double[cnt];
-		
-		for(int i=0; i<cnt;++i) {
-			n[i] = sc.nextDouble();
+		int n = sc.nextInt();
+		int[] num = new int[n];
+		double max = -1;
+		double sum = 0;
+		for (int i=0; i<n; ++i) {
+			num[i] = sc.nextInt();
+			if (num[i] > max) max = num[i];
+			sum += num[i];
 		}
-		num=n[0];
-		for(int i=1; i<cnt;++i) {
-			if(num < n[i]) {
-				num=n[i];
-			}
-		}
-		for(int i=0; i<cnt;++i) {
-			n[i]=n[i]/num*100;
-			
-		}
-		
-		for(int i=0; i<cnt;++i) {
-			sum += n[i];
-			
-		}
-		
-		System.out.println(sum/cnt);
+		System.out.println(sum*100.0/max/n);
 	}
 }
