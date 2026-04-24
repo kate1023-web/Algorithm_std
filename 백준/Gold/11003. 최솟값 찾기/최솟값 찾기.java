@@ -6,10 +6,21 @@ import java.util.StringTokenizer;
 
 public class Main {
 	public static final Scanner scanner = new Scanner(System.in);
+	
+	static class Node {
+		public int value;
+		public int index;
+		
+		Node(int value, int index) {
+			this.value = value;
+			this.index = index;
+		}
+	}
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringBuilder sb = new StringBuilder();
 		int n = Integer.parseInt(st.nextToken());
 		int sec = Integer.parseInt(st.nextToken());
 		st = new StringTokenizer(br.readLine());
@@ -23,22 +34,10 @@ public class Main {
 			
 			mydeque.addLast(new Node(num, i));
 			
-			if(mydeque.getFirst().index <= i-sec) mydeque.removeFirst();
+			while(!mydeque.isEmpty() && mydeque.getFirst().index <= i-sec) mydeque.removeFirst();
 			
-			bw.write(mydeque.getFirst().value + " ");
-			
+			sb.append(mydeque.getFirst().value).append(' ');
 		}
-		bw.flush();
-		bw.close();
-	}
-	
-	static class Node {
-		public int value;
-		public int index;
-		
-		Node(int value, int index) {
-			this.value = value;
-			this.index = index;
-		}
+		System.out.println(sb);
 	}
 }
